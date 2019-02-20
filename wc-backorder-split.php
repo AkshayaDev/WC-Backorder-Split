@@ -4,7 +4,7 @@ Plugin Name: WC Backorder Split
 Plugin URI: https://github.com/AkshayaDev/WC-Backorder-Split
 Description: A simple plugin that helps you split the order for the products that you do not have in stock.
 Author: Akshaya Swaroop
-Version: 1.1
+Version: 1.0
 Author URI: https://github.com/AkshayaDev
 Requires at least: 4.4
 Tested up to: 4.8

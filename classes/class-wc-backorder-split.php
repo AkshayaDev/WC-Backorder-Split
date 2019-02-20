@@ -28,7 +28,7 @@ class WC_Backorder_Split {
 		$this->version = WC_BACKORDER_SPLIT_PLUGIN_VERSION;
 		
 		add_action('init', array(&$this, 'wcbs_init'), 0);
-		add_action( 'admin_enqueue_scripts', array( $this, 'admin_styles' ) );		
+		add_action( 'admin_enqueue_scripts', array( $this, 'wcbs_admin_styles' ) );		
 
 		// Init Frontend
 		if ( ! class_exists( 'WC_Backorder_Split_Frontend' ) ) {
@@ -85,7 +85,7 @@ class WC_Backorder_Split {
 	/**
 	 * Enqueue styles.
 	 */
-	public function admin_styles() {
+	public function wcbs_admin_styles() {
 		wp_enqueue_style($this->token.'-admin-css',  $this->plugin_url.'assets/admin/css/admin.css', array(), $this->version);
 	}
 

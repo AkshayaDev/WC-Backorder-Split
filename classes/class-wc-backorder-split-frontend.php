@@ -5,14 +5,14 @@ if(!defined('ABSPATH')) exit; // Exit if accessed directly
 class WC_Backorder_Split_Frontend {
 
 	public function __construct() {
-		add_action('woocommerce_checkout_order_processed', array($this,'review_and_split_order'), 10, 3);
-		add_filter('wc_order_statuses', array($this,'add_backorder_order_status'));
+		add_action('woocommerce_checkout_order_processed', array($this,'wcbs_review_and_split_order'), 10, 3);
+		add_filter('wc_order_statuses', array($this,'wcbs_add_backorder_order_status'));
 
-		add_action( 'woocommerce_order_status_pending', array($this,'update_backorder_order_status'), 99, 1 );
-		add_action( 'woocommerce_order_status_completed', array($this,'update_backorder_order_status'), 99, 1 );
-		add_action( 'woocommerce_order_status_processing', array($this,'update_backorder_order_status'), 99, 1 );
-		add_action( 'woocommerce_order_status_on-hold', array($this,'update_backorder_order_status') );
-		add_action( 'woocommerce_order_status_cancelled', array($this,'update_backorder_order_status'), 99, 1 );
+		add_action( 'woocommerce_order_status_pending', array($this,'wcbs_update_backorder_order_status'), 99, 1 );
+		add_action( 'woocommerce_order_status_completed', array($this,'wcbs_update_backorder_order_status'), 99, 1 );
+		add_action( 'woocommerce_order_status_processing', array($this,'wcbs_update_backorder_order_status'), 99, 1 );
+		add_action( 'woocommerce_order_status_on-hold', array($this,'wcbs_update_backorder_order_status') );
+		add_action( 'woocommerce_order_status_cancelled', array($this,'wcbs_update_backorder_order_status'), 99, 1 );
 
 		add_filter( 'woocommerce_register_shop_order_post_statuses', array($this,'wcbs_register_new_order_status'));
 
@@ -20,7 +20,7 @@ class WC_Backorder_Split_Frontend {
 
 	}
 
-	public function order_contains_backorder_products($order_id) {
+	public function wcbs_order_contains_backorder_products($order_id) {
 		if ( ! $order = wc_get_order( $order_id ) ) {
 			return false;
 		}
@@ -38,7 +38,7 @@ class WC_Backorder_Split_Frontend {
 		return false;
 	}
 
-	public function create_backorder($parent_order_id) {
+	public function wcbs_create_backorder($parent_order_id) {
 
 		if ( ! $parent_order = wc_get_order( $parent_order_id ) ) {
 			return false;
@@ -57,7 +57,7 @@ class WC_Backorder_Split_Frontend {
 		return wc_create_order( $default_args );
 	}
 
-	public function add_customer_data($parent_order_id,$backorder) {
+	public function wcbs_add_customer_data($parent_order_id,$backorder) {
 
 		if ( ! $parent_order = wc_get_order( $parent_order_id ) ) {
 			return false;
@@ -98,7 +98,7 @@ class WC_Backorder_Split_Frontend {
 		}
 	}
 
-	public function review_and_split_order($order_id, $posted_data, $order) {
+	public function wcbs_review_and_split_order($order_id, $posted_data, $order) {
 
 		if ( ! $order = wc_get_order( $order_id ) ) {
 			return;
@@ -112,14 +112,14 @@ class WC_Backorder_Split_Frontend {
 
 		$order_items = $order->get_items( apply_filters( 'woocommerce_purchase_order_item_types', 'line_item' ) );
 
-		$order_contains_backorder_products = $this->order_contains_backorder_products($order_id);
+		$order_contains_backorder_products = $this->wcbs_order_contains_backorder_products($order_id);
 
 		if($order_contains_backorder_products==false) {
 			return;
 		}
 
 		// Create Backorder
-		$backorder = $this->create_backorder($order_id);
+		$backorder = $this->wcbs_create_backorder($order_id);
 
 		if ( is_wp_error( $backorder ) ) {
 
@@ -128,7 +128,7 @@ class WC_Backorder_Split_Frontend {
 		}
 
 		// Add customer data to backorder
-		$this->add_customer_data($order_id,$backorder);
+		$this->wcbs_add_customer_data($order_id,$backorder);
 
 		if ( count( $order_items ) <= 0 ) {
 			$backorder->delete(true);
@@ -196,13 +196,13 @@ class WC_Backorder_Split_Frontend {
 
 	}
 
-	public function add_backorder_order_status($order_statuses) {
+	public function wcbs_add_backorder_order_status($order_statuses) {
 		global $WC_Backorder_Split;
 		$order_statuses['wc-backordered'] = _x( 'Backordered', 'Order status', $WC_Backorder_Split->text_domain );
 		return $order_statuses;
 	}
 
-	public function update_backorder_order_status($order_id) {
+	public function wcbs_update_backorder_order_status($order_id) {
 		$order = wc_get_order( $order_id );
 
 		if ( ! $order ) {

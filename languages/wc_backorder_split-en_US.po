@@ -1,0 +1,93 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WC Backorder Split\n"
+"POT-Creation-Date: 2019-02-21 18:12+0530\n"
+"PO-Revision-Date: 2019-02-21 18:15+0530\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.1\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: wc-backorder-split.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: classes/class-wc-backorder-split-frontend.php:233
+#, php-format
+msgid "This order has backordered items and has been split into Order #%s."
+msgstr "This order has backordered items and has been split into Order #%s."
+
+#: classes/class-wc-backorder-split-frontend.php:247
+#: classes/class-wc-backorder-split-frontend.php:284
+msgctxt "Order status"
+msgid "Backordered"
+msgstr "Backordered"
+
+#. translators: %s: number of orders
+#: classes/class-wc-backorder-split-frontend.php:290
+#, php-format
+msgid "Backordered <span class=\"count\">(%s)</span>"
+msgid_plural "Backordered <span class=\"count\">(%s)</span>"
+msgstr[0] "Backordered <span class=\"count\">(%s)</span>"
+msgstr[1] "Backordered <span class=\"count\">(%s)</span>"
+
+#: classes/class-wc-backorder-split-frontend.php:328
+msgid "Backorder details"
+msgstr "Backorder details"
+
+#: classes/class-wc-backorder-split-frontend.php:334
+msgid "Product"
+msgstr "Product"
+
+#: classes/class-wc-backorder-split-frontend.php:335
+msgid "Total"
+msgstr "Total"
+
+#: classes/class-wc-backorder-split-frontend.php:369
+msgid "Note:"
+msgstr "Note:"
+
+#: wc-backorder-split.php:35
+msgid "WC Backorder Split plugin requires at least WooCommerce 3.0"
+msgstr "WC Backorder Split plugin requires at least WooCommerce 3.0"
+
+#: wc-backorder-split.php:46
+msgid ""
+"WC Backorder Split plugin requires <a href=\"http://wordpress.org/extend/"
+"plugins/woocommerce/\">WooCommerce</a> plugins to be active!"
+msgstr ""
+"WC Backorder Split plugin requires <a href=\"http://wordpress.org/extend/"
+"plugins/woocommerce/\">WooCommerce</a> plugins to be active!"
+
+#. Plugin Name of the plugin/theme
+msgid "WC Backorder Split"
+msgstr "WC Backorder Split"
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/AkshayaDev/WC-Backorder-Split"
+msgstr "https://github.com/AkshayaDev/WC-Backorder-Split"
+
+#. Description of the plugin/theme
+msgid ""
+"A simple plugin that helps you split the WooCommerce order for the products "
+"that you do not have in stock."
+msgstr ""
+"A simple plugin that helps you split the WooCommerce order for the products "
+"that you do not have in stock."
+
+#. Author of the plugin/theme
+msgid "Akshaya Swaroop"
+msgstr "Akshaya Swaroop"
+
+#. Author URI of the plugin/theme
+msgid "https://github.com/AkshayaDev"
+msgstr "https://github.com/AkshayaDev"

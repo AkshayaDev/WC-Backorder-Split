@@ -2,12 +2,12 @@
 /*
 Plugin Name: WC Backorder Split
 Plugin URI: https://github.com/AkshayaDev/WC-Backorder-Split
-Description: A simple plugin that helps you split the order for the products that you do not have in stock.
+Description: A simple plugin that helps you split the WooCommerce order for the products that you do not have in stock.
 Author: Akshaya Swaroop
 Version: 1.0
 Author URI: https://github.com/AkshayaDev
-Requires at least: 4.4
-Tested up to: 4.8
+Requires at least: 4.9
+Tested up to: 5.0.3
 Text Domain: wc_backorder_split
 Domain Path: /languages/
 */

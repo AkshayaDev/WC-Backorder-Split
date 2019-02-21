@@ -138,7 +138,7 @@ class WC_Backorder_Split_Frontend {
 	 * @return void
 	 */
 	public function wcbs_review_and_split_order($order_id, $posted_data, $order) {
-
+		global $WC_Backorder_Split;
 		if ( ! $order = wc_get_order( $order_id ) ) {
 			return;
 		}
@@ -230,7 +230,7 @@ class WC_Backorder_Split_Frontend {
 			update_post_meta($order_id,'_backorder_id', $backorder->get_id());			
 
 			update_post_meta($backorder->get_id(), '_initial_order_status', 'backordered');
-			$order->add_order_note( sprintf( __( 'This order has backordered items and has been split into Order #%s.', 'woocommerce' ), $backorder->get_id() ) );
+			$order->add_order_note( sprintf( __( 'This order has backordered items and has been split into Order #%s.', $WC_Backorder_Split->text_domain ), $backorder->get_id() ) );
 
 		}		
 
@@ -309,7 +309,7 @@ class WC_Backorder_Split_Frontend {
 	 * @param WC_Order $order Order object.
 	 */
 	public function wcbs_render_backorder_table($order) {
-
+		global $WC_Backorder_Split;
 		if(!$order) {
 			return;
 		}
@@ -325,14 +325,14 @@ class WC_Backorder_Split_Frontend {
 			$show_purchase_note = $backorder->has_status( array( 'completed', 'processing' ) );			
 
 		?>
-		<h2 class="woocommerce-order-details__title"><?php _e( 'Backorder details', 'woocommerce' ); ?></h2>
+		<h2 class="woocommerce-order-details__title"><?php _e( 'Backorder details', $WC_Backorder_Split->text_domain ); ?></h2>
 
 		<table class="woocommerce-table woocommerce-table--order-details shop_table order_details">
 
 		<thead>
 			<tr>
-				<th class="woocommerce-table__product-name product-name"><?php _e( 'Product', 'woocommerce' ); ?></th>
-				<th class="woocommerce-table__product-table product-total"><?php _e( 'Total', 'woocommerce' ); ?></th>
+				<th class="woocommerce-table__product-name product-name"><?php _e( 'Product', $WC_Backorder_Split->text_domain ); ?></th>
+				<th class="woocommerce-table__product-table product-total"><?php _e( 'Total', $WC_Backorder_Split->text_domain ); ?></th>
 			</tr>
 		</thead>
 
@@ -366,7 +366,7 @@ class WC_Backorder_Split_Frontend {
 			?>
 			<?php if ( $backorder->get_customer_note() ) : ?>
 				<tr>
-					<th><?php _e( 'Note:', 'woocommerce' ); ?></th>
+					<th><?php _e( 'Note:', $WC_Backorder_Split->text_domain ); ?></th>
 					<td><?php echo wptexturize( $backorder->get_customer_note() ); ?></td>
 				</tr>
 			<?php endif; ?>
